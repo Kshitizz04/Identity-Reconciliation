@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 import { config } from "dotenv";
-import { DB_URI } from "../config/env";
+import { DB_URI } from "../config/env.ts";
 
 config({ path: `.env.${process.env.NODE_ENV || "development"}.local` });
 

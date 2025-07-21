@@ -1,7 +1,7 @@
-import { pgTable, integer, text, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable, integer, text, timestamp, serial } from 'drizzle-orm/pg-core';
 
 export const contactsTable = pgTable('contacts_table', {
-  id: integer('id').primaryKey().notNull(),
+  id: serial('id').primaryKey().notNull(),
   phoneNumber: text('phone_number'),
   email: text('email'),
   linkedId: integer('linked_id'),
