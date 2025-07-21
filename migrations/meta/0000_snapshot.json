@@ -1,5 +1,5 @@
 {
-  "id": "58b7276d-69d0-4010-929e-70688b96a753",
+  "id": "c379dee6-3561-4767-9265-7baa94ff1f37",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,7 +10,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "serial",
           "primaryKey": true,
           "notNull": true
         },
@@ -34,7 +34,8 @@
         },
         "link_precedence": {
           "name": "link_precedence",
-          "type": "text",
+          "type": "link_precedence",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -42,13 +43,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         },
         "deleted_at": {
           "name": "deleted_at",
@@ -66,7 +69,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.link_precedence": {
+      "name": "link_precedence",
+      "schema": "public",
+      "values": [
+        "primary",
+        "secondary"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
