@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-app.use('/api/v1/identify', identifyRouter); 
+app.use('/api/v1/identifyCustomer', identifyRouter); 
 
 app.use(errorMiddleware);
 

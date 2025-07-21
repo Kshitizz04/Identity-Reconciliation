@@ -1,9 +1,8 @@
 import  {Router} from 'express';
-import { tempRoute } from '../controllers/identify.controller.ts';
-import tseslint from './../node_modules/typescript-eslint/dist/config-helper';
+import { identify } from '../controllers/identifyCustomer/identifyCustomer.controller.ts';
 
 const identifyRouter = Router();
 
-identifyRouter.get('/identify', tempRoute);
+identifyRouter.post('/identify', identify);
 
 export default identifyRouter;
