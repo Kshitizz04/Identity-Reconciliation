@@ -1,12 +1,17 @@
 import express from "express";
+import { PORT } from "./config/env.ts";
+import identifyRouter from "./routes/identify.route.ts";
 
 const app = express();
+
+app.use('/api/v1/identify', identifyRouter); 
+
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Welcome to Bitespeed Backend Task API!!");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");    
+app.listen(PORT, () => {
+  console.log(`Bitespeed API is running on http://localhost:${PORT}`);    
 });
 
 
