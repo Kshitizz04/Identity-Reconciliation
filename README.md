@@ -2,7 +2,7 @@
 
 ## API Endpoint
 
-**POST** `/api/v1/identifyCustomer/identify`
+**POST** `https://identity-reconciliation-on8i.onrender.com/api/v1/identifyCustomer/identify`
 
 ### Request Body
 
