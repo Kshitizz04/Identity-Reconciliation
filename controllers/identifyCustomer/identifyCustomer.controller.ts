@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { IdentifyReqBody, IdentifyResponse } from "./identifyCustomer.types.ts";
-import { db } from "../../database/db.ts";
-import { contactsTable } from "../../database/schema.ts";
+import { IdentifyReqBody, IdentifyResponse } from "./identifyCustomer.types.js";
+import { db } from "../../database/db.js";
+import { contactsTable } from "../../database/schema.js";
 import { eq, or } from "drizzle-orm";
 
 export const identify = async (req: Request<{}, any, IdentifyReqBody>, res: Response<IdentifyResponse>, next: NextFunction) => {

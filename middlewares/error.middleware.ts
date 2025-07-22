@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { CustomError } from '../utils/CustomError.ts';
+import { CustomError } from '../utils/CustomError.js';
 
 // NOTE: Got this done by copilot, but the CustomError and CustomResponse classes are my standard approach, I use them across all my projects for consistent error handling.
 

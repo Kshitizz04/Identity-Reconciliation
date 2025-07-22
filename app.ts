@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
-import { PORT } from "./config/env.ts";
-import identifyRouter from "./routes/identify.route.ts";
-import errorMiddleware from "./middlewares/error.middleware.ts";
+import { PORT } from "./config/env.js";
+import identifyRouter from "./routes/identify.route.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
 
 const app = express();
 app.use(express.json());
