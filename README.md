@@ -57,7 +57,7 @@ It ensures a single "primary" contact per group and links all related contacts.
 3. Configure your PostgreSQL database in `.env`.
 4. Run migrations:
    ```bash
-   npm run migrate
+   npm run db:migrate
    ```
 5. Start the server:
    ```bash
