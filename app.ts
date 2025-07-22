@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Bitespeed API is running on http://localhost:${PORT}`);    
+  console.log(`Bitespeed API is running on Port:${PORT}`);
 });
 
 
