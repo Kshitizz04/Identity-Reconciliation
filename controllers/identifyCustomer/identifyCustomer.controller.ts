@@ -1,18 +1,17 @@
 import { NextFunction, Request, Response } from "express";
-import { IdentifyReqBody, IdentifyResponse } from "./identifyCustomer.types.js";
+import { IdentifyReqBody, IdentifyResBody } from "./identifyCustomer.types.js";
 import { db } from "../../database/db.js";
 import { contactsTable } from "../../database/schema.js";
 import { eq, or } from "drizzle-orm";
+import { CustomError } from "../../utils/CustomError.js";
 
-export const identify = async (req: Request<{}, any, IdentifyReqBody>, res: Response<IdentifyResponse>, next: NextFunction) => {
+export const identify = async (req: Request<{}, any, IdentifyReqBody>, res: Response<IdentifyResBody>, next: NextFunction) => {
     try {
         const { email, phoneNumber } = req.body;
 
         if (!email && !phoneNumber) {
-            return res.status(400).json({ 
-                isSuccess: false,
-                message: "email or phoneNumber required"
-            });
+            const error = new CustomError ("Email or phone number is required", 400);
+            throw error;
         }
 
         const contacts = await db.select().from(contactsTable).where(
@@ -50,10 +49,8 @@ export const identify = async (req: Request<{}, any, IdentifyReqBody>, res: Resp
             })
 
             if (!primaryContact) {
-                return res.status(500).json({
-                    isSuccess: false,
-                    message: "Primary contact could not be determined",
-                });
+                const error = new CustomError ("Primary contact could not be determined", 500);
+                throw error;
             }
 
             const otherPrimaries = allContacts.filter(
@@ -109,15 +106,11 @@ export const identify = async (req: Request<{}, any, IdentifyReqBody>, res: Resp
         .map((c) => c.id);
 
         res.status(200).json({
-            isSuccess: true,
-            message: "Contact identified successfully",
-            data: {
-                contact: {
-                primaryContactId: primaryContact.id,
-                emails,
-                phoneNumbers,
-                secondaryContactIds,
-                },
+            contact: {
+            primaryContactId: primaryContact.id,
+            emails,
+            phoneNumbers,
+            secondaryContactIds,
             },
         });
     } catch (err) {
