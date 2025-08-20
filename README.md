@@ -17,15 +17,11 @@
 
 ```json
 {
-  "isSuccess": true,
-  "message": "Contact identified successfully",
-  "data": {
-    "contact": {
-      "primaryContactId": 1,
-      "emails": ["primary@email.com", "secondary@email.com"],
-      "phoneNumbers": ["1234567890", "0987654321"],
-      "secondaryContactIds": [2, 3]
-    }
+  "contact": {
+    "primaryContactId": 1,
+    "emails": ["primary@email.com", "secondary@email.com"],
+    "phoneNumbers": ["1234567890", "0987654321"],
+    "secondaryContactIds": [2, 3]
   }
 }
 ```
@@ -89,15 +85,12 @@ It ensures a single "primary" contact per group and links all related contacts.
 **Response:**
 ```json
 {
-  "isSuccess": true,
-  "message": "Contact identified successfully",
-  "data": {
-    "contact": {
-      "primaryContactId": 1,
-      "emails": ["john@example.com"],
-      "phoneNumbers": ["1234567890"],
-      "secondaryContactIds": []
-    }
+  
+  "contact": {
+    "primaryContactId": 1,
+    "emails": ["john@example.com"],
+    "phoneNumbers": ["1234567890"],
+    "secondaryContactIds": []
   }
 }
 ```
